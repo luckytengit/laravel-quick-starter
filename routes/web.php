@@ -32,6 +32,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// For tasks
 Route::get('/tasks', [TaskController::class, 'index']);
 Route::post('/task', [TaskController::class, 'store']);
 Route::delete('/task/{task}', [TaskController::class, 'destroy']);
+
+// For calculator
+Route::get('/calculator', function () {
+    return view('calculator');
+});

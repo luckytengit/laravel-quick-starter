@@ -1,26 +1,28 @@
-<x-layouts.task>
+@extends('app')
+
+@section('content')
 
     <!-- Bootstrap Boilerplate... -->
-    <div class="sm:max-w-4xl items-center justify-between mt-1">
+    <div class="flex items-center justify-between mt-1">
         <!-- Display Validation Errors -->
         @include('common.errors')
 
         <!-- New Task Form -->
-        <form action="./task" method="POST" class="w-full flex items-center justify-between mt-1">
+        <form action="./task" method="POST" class="flex items-center justify-between mt-1">
             {{ csrf_field() }}
 
             <!-- Task Name -->
-            <div class="form-group w-full">
+            <div class="form-group">
                 <label for="task-name" class="m-3 control-label">[Task]</label>
 
-                <div>
-                    <input type="text" name="name" id="task-name" class="block mt-1 w-full">
+                <div class="m-3">
+                    <input type="text" name="name" id="task-name" class="form-control">
                 </div>
             </div>
 
             <!-- Add Task Button -->
             <div class="form-group">
-                <div class="mt-6">
+                <div class="col-sm-offset-3 mt-6">
                     <x-primary-button class="ml-3" type="submit">
                         <i class="fa fa-plus"></i> Add Task
                     </x-primary-button>
@@ -33,27 +35,27 @@
     <!-- TODO: Current Tasks -->
     [Current Tasks]
     @if (isset($tasks) && count($tasks) > 0)
-        <div class="justify-between mt-1">
+        <div class="flex justify-between h-1">
             <div class="panel-body">
-                <table class="w-full table table-striped task-table">
+                <table class="table table-striped task-table">
 
                     <!-- Table Headings -->
                     <thead>
-                        <th class="w-96">tasks</th>
+                        <th>tasks</th>
                         <th>&nbsp;</th>
                     </thead>
 
                     <!-- Table Body -->
                     <tbody>
                         @foreach ($tasks as $task)
-                            <tr class="items-center border">
+                            <tr class="nline-flex items-center px-3 py-2 border">
                                 <!-- Task Name -->
                                 <td class="table-text">
                                     <div>{{ $task->name }}</div>
                                 </td>
 
                                 <!-- Delete Button -->
-                                <td class="text-right">
+                                <td>
                                     <form action="./task/{{ $task->id }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -69,5 +71,4 @@
             </div>
         </div>
     @endif
-
-</x-layouts.task>
+@endsection
