@@ -5,6 +5,6 @@
 도움이 됐을면 합니다.
 
 * 2023-05-01 뷰단을 blade components 방식으로 변경했습니다.
-```php
-	php artisan make:component Layouts/Task
-```
+	```php
+		php artisan make:component Layouts/Task
+	```
