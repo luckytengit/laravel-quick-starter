@@ -7,7 +7,7 @@
 
         <!-- New Task Form -->
         <form action="./task" method="POST" class="w-full flex items-center justify-between mt-1">
-            {{ csrf_field() }}
+            @csrf
 
             <!-- Task Name -->
             <div class="form-group w-full">
@@ -55,8 +55,8 @@
                                 <!-- Delete Button -->
                                 <td class="text-right">
                                     <form action="./task/{{ $task->id }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
+                                        @csrf
+                                        @method('DELETE')
 
                                         <x-primary-button class="ml-3">Delete Task</x-primary-button>
                                     </form>
